@@ -9,7 +9,7 @@ blueprint = Blueprint("user", "users", description="User operations")
 @blueprint.route("/users/<string:user_id>")
 class User(MethodView):
     @blueprint.response(200, UserSchema)
-    def get(self, user_id):
+    def get(_, user_id):
         user = users.get(user_id)
         if not user :
             abort(404, "User not found")
